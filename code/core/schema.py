@@ -44,7 +44,7 @@ class ProfileOutSchema(Schema):
     email: str
     first_name: str
     last_name: str
-    restaurant: RestaurantOutSchema
+    restaurant: Optional[RestaurantOutSchema] = None
 
     @staticmethod
     def resolve_restaurant(obj):
