@@ -43,3 +43,5 @@ coverage.xml
 *.cover
 
 postgres-data/
+jwt-signing.pem
+jwt-signing.pub
