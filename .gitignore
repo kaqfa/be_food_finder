@@ -1,0 +1,45 @@
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Django environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Django static files
+staticfiles/
+static/
+
+# Django migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Django development
+*.swp
+.DS_Store
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Django test coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+postgres-data/
