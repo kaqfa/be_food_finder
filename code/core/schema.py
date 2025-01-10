@@ -5,7 +5,7 @@ from django.db.models import Q
 
 from pydantic  import field_validator, Field
 
-from core.models import Restaurant, Menu, Review, Bookmark
+from core.models import Restaurant, Menu, Review, Bookmark, RatingMenu
 
 class RegisterSchema(Schema):
     username: str
@@ -40,6 +40,7 @@ class RestaurantInSchema(ModelSchema):
                         'phone', 'website', 'lattitude', 'longitude']
 
 class ProfileOutSchema(Schema):
+    id: int
     username: str
     email: str
     first_name: str
@@ -81,10 +82,15 @@ class MenuInSchema(ModelSchema):
         model = Menu
         model_fields = ['restaurant', 'name', 'description', 'price']
 
-class ReviewOutSchema(ModelSchema):
-    class Config:
-        model = Review
-        model_fields = ['id', 'restaurant', 'user', 'rating', 'comment', 'created_at', 'updated_at']
+class ReviewOutSchema(Schema):
+    id: int
+    restaurant: RestaurantOutSchema
+    user: ProfileOutSchema
+    rating: int
+    comment: str
+    created_at: datetime
+    updated_at: datetime
+    
 
 class ReviewInSchema(ModelSchema):
     class Config:
@@ -100,3 +106,16 @@ class BookmarkInSchema(ModelSchema):
     class Config:
         model = Bookmark
         model_fields = ['user', 'restaurant']
+
+class RatingMenuOutSchema(Schema):
+    id: int
+    user: ProfileOutSchema
+    menu: MenuOutSchema
+    rating: int
+    created_at: datetime
+    updated_at: datetime
+
+class RatingMenuInSchema(ModelSchema):
+    class Config:
+        model = RatingMenu
+        model_fields = ['rating']

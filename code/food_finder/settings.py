@@ -76,10 +76,18 @@ WSGI_APPLICATION = 'food_finder.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    #  "default": {
+    #     "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #     'NAME': 'simple_lms',
+    #     'USER': 'simple_user',
+    #     'PASSWORD': 'simple_password',
+    #     'HOST': 'food_finder_db',
+    #     'PORT': 5432,
+    # }
 }
 
 
